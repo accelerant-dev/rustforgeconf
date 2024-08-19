@@ -1,1 +1,839 @@
-<p>Who goes there?</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rust Forge Conference</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-color-dark: #06252f;
+            --brand-color-light: rgba(26, 183, 143, 1);
+            --brand-color-light-ghost: rgba(26, 183, 143, 0.2);
+
+            --background-color: var(--brand-color-dark);
+            --highlight-color: white;
+            --heading-color: white;
+            --text-color: var(--brand-color-light);
+            --framework-color: var(--brand-color-light);
+
+            --spacing-default: 2rem;
+            --spacing-small: 1rem;
+            --spacing-tiny: 0.25rem;
+            --spacing-content: 1rem;
+
+            --col-width: 50rem;
+            --row-spacing: 2rem;
+            --viewport-gutter: 3rem;
+
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            color: var(--text-color);
+            line-height: 1.5;
+            font-size: 20px;
+            background-color: var(--background-color);
+            font-family: "Fira Code", monospace;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            scrollbar-width: var(--spacing-content);
+            scrollbar-color: var(--framework-color) transparent;
+            min-height: 100vh;
+
+            text-shadow: 2px 0 8px var(--brand-color-light-ghost);
+            box-shadow: 2px 0 8px var(--brand-color-light-ghost);
+        }
+
+        html::-webkit-scrollbar {
+            width: var(--spacing-content);
+        }
+
+        html::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
+
+        html::-webkit-scrollbar-thumb {
+            background-color: var(--framework-color);
+            border-radius: 0px;
+        }
+
+        h2 {
+            font-size: 1em;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1em;
+            font-weight: normal;
+            color: var(--heading-color);
+            text-align: center;
+        }
+
+        a {
+            color: var(--text-color);
+            text-decoration: none;
+            border-bottom: 1px solid var(--highlight-color);
+            font-weight: bold;
+        }
+
+        ul {
+            margin-left: var(--spacing-default);
+        }
+
+        strong {
+            color: var(--highlight-color);
+        }
+
+        code {
+            border: 1px solid var(--brand-color-light-ghost);
+            padding: 0.125em 0.325em;
+            display: inline-block;
+            border-radius: 0.25em;
+
+
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            max-width: var(--col-width);
+            margin: 0 auto;
+            gap: var(--row-spacing);
+            min-height: 100vh;
+        }
+
+        .row {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .col {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding: var(--row-spacing) var(--viewport-gutter);
+            max-width: var(--col-width);
+            gap: var(--spacing-default);
+        }
+
+        .section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: var(--spacing-content);
+            padding: var(--spacing-content) 0;
+        }
+
+
+        .buttons {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: var(--spacing-default);
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .buttons > li {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-small);
+        }
+
+        .button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            outline: 1px solid var(--framework-color);
+            text-decoration: none;
+            background-color: var(--framework-color);
+            color: var(--background-color);
+            border: 0;
+            font-size: inherit;
+            font-family: inherit;
+
+        }
+        .field {
+            display: flex;
+            justify-content: stretch;
+        }
+        input[type="email"] {
+            padding: 1rem 2rem;
+            outline: 1px solid var(--framework-color);
+            text-decoration: none;
+            background-color: transparent;
+
+            border: 0;
+            font-size: inherit;
+            font-family: inherit;
+            color: white;
+            display: block;
+            width: 100%;
+        }
+        select {
+            display: block;
+            font-size: inherit;
+            font-family: inherit;
+
+            border-radius: 0.5rem;
+            color: var(--highlight-color);
+            background-color: transparent;
+
+            appearance: unset;
+            /* background-color: rgba(0,0,0,0.29); */
+            background-image:
+        url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='504' height='552' preserveAspectRatio='none' viewBox='0 0 504 552'%3E%3Cpath d='M483.9,210.9L252,442.9L20.1,210.9l67.9-67.9L252,307.1l164.1-164.1L483.9,210.9z' fill='%23FFFFFF' /%3E%3C/svg%3E");
+            background-position: calc(100% - 1.1375rem) center;
+            background-size: 20px;
+            background-repeat: no-repeat;
+
+            border: none;
+            outline: 1px solid var(--framework-color);
+            border-radius: 0;
+            height: 3.25rem;
+            padding: 0 1.1375rem;
+            padding-right: 3.1875rem;
+            line-height: 3.25rem;
+            width: 100%;
+        }
+        select:hover {
+            cursor: pointer;
+        }
+
+        .button:hover {
+            outline-color: white;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        .button:hover strong {
+            color: var(--brand-color-light);
+        }
+
+        .button.outlined {
+            display: inline-block;
+            padding: 1rem 2rem;
+            outline: 1px solid var(--framework-color);
+            text-decoration: none;
+            background: transparent;
+            color: var(--brand-color-light);
+            border: 0;
+        }
+
+        .button.outlined:hover {
+            outline-color: white;
+        }
+
+        .button.outlined:hover strong {
+            color: white;
+        }
+
+
+        .left-gutter {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            width: var(--viewport-gutter);
+            padding-top: var(--spacing-default);
+        }
+
+        .right-gutter {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navigation-icons {
+            list-style: none;
+            padding: var(--spacing-small) 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-tiny);
+        }
+
+        .navigation-icons a {
+            text-decoration: none;
+
+            padding: var(--spacing-tiny);
+
+            border: 1px solid var(--brand-color-light-ghost);
+            display: flex;
+            flex-direction: column;
+            border-radius: 2px;
+        }
+
+        .navigation-icons a:hover {
+            border-color: white;
+            color: white;
+        }
+
+        .navigation-icons svg {
+            fill: currentColor;
+            display: block;
+        }
+
+        .navigation-icons label {
+            display: none;
+        }
+
+        .social-icons {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .social-icons a {
+            text-decoration: none;
+            border: none;
+            padding: var(--spacing-tiny);
+            display: block;
+        }
+
+        .social-icons a:hover svg {
+            fill: var(--highlight-color);
+        }
+
+        .social-icons svg {
+            fill: currentColor;
+        }
+
+
+        #intro-layout {
+            min-height: 50vh;
+            border-bottom: 1px solid var(--brand-color-light-ghost);
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-default);
+            padding-bottom: var(--spacing-default);
+
+        }
+
+        #intro-logo {
+            display: block;
+            width: 100%;
+            max-width: 30rem;
+            height: auto;
+        }
+
+        #intro-logo .text {
+            fill: var(--heading-color);
+        }
+
+        #intro-logo .mark {
+            fill: var(--brand-color-light);
+        }
+
+        #intro-body {
+            text-align: center;
+            max-width: 25rem;
+            margin: 0 auto;2
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-default);
+        }
+
+
+        #tim-bio-layout {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-default);
+        }
+
+        @media screen and (min-width: 50rem) {
+            #tim-bio-layout {
+                display: grid;
+                grid-template-columns: 1fr 3fr;
+                gap: var(--spacing-default);
+            }
+        }
+
+        #tim-photo {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        #bottom-cta {
+
+            border: 1px solid var(--brand-color-light);
+            box-shadow: 10px 10px 0px var(--brand-color-light);
+
+            max-width: 30rem;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-default);
+            padding: var(--spacing-default);
+        }
+
+        #footer-layout {
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-default);
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="main">
+
+    <div id="intro" class="row">
+        <div class="col">
+            <div class="section">
+                <div id="intro-layout">
+
+                    <svg id="intro-logo" viewBox="0 0 763.18 317.17" style="enable-background:new 0 0 763.18 317.17;" xml:space="preserve">
+                        <g>
+                            <path class="text" d="M122.69,60.63c0-19.72-12.7-32.59-53.49-32.59H0v109.99h32.09V98.41h39.78c13.71,0,18.05,5.18,18.05,16.55
+                                v23.07h32.09v-23.07c0-11.54-1.83-23.74-19.21-27.75v-0.33C118,82.37,122.69,71.67,122.69,60.63z M70.7,79.7H32.09V51.78h35.78
+                                c18.55,0,24.4,5.68,24.4,13.54C92.26,73.84,86.58,79.7,70.7,79.7z"/>
+                            <polygon class="text" points="0.01,282.55 32.1,282.55 32.1,241.1 89.79,241.1 89.79,220.7 32.1,220.7 32.1,196.29 115.59,196.29
+                                115.59,172.56 0.01,172.56 	"/>
+                            <path class="text" d="M451.68,78.53c-9.36-3.84-23.07-5.18-39.11-6.18c-12.37-0.84-28.92-1.51-34.93-3.34
+                                c-4.68-1.51-7.03-4.01-7.03-8.2c0-7.86,9.2-12.7,31.26-12.7c22.72,0,32.59,5.84,32.59,15.88h28.75c0-19.9-9.03-37.95-61.34-37.95
+                                c-43.63,0-63.36,16.71-63.36,37.11c0,10.7,5.36,18.55,13.37,22.74c9.03,4.67,25.08,6.51,39.62,7.36
+                                c12.2,0.66,29.08,1.33,35.94,2.84c5.86,1.33,8.7,4,8.7,8.51c0,7.53-4.85,13.38-33.93,13.38c-27.58,0-34.26-7.53-34.26-16.88h-28.75
+                                c0,14.7,5.85,38.94,63.02,38.94c56.66,0,66.03-20.55,66.03-37.93C468.24,91.57,462.21,82.87,451.68,78.53z"/>
+                            <polygon class="text" points="534.03,137.97 566.12,137.97 566.12,51.72 609.42,51.72 609.42,27.98 490.74,27.98 490.74,51.72
+                                534.03,51.72 	"/>
+                            <path class="text" d="M467.07,205.15c0-19.72-12.7-32.59-53.49-32.59h-69.2v109.99h32.09v-39.62h39.78
+                                c13.71,0,18.05,5.18,18.05,16.55v23.07h32.09v-23.07c0-11.54-1.83-23.74-19.22-27.75v-0.33
+                                C462.39,226.89,467.07,216.19,467.07,205.15z M415.1,224.22h-38.62v-27.92h35.78c18.55,0,24.4,5.68,24.4,13.54
+                                C436.65,218.36,430.97,224.22,415.1,224.22z"/>
+                            <path class="text" d="M557.44,242.77h35.43v0.5c0,7.86-8.68,20.05-31.58,20.05c-26.92,0-36.95-15.54-36.95-34.09
+                                c0-19.72,12.2-34.93,37.45-34.93c24.4,0,32.92,10.7,32.92,19.22v1.17h28.58c0.17-1.17,0.17-1.84,0.17-2.34
+                                c0-20.57-14.54-41.79-62.69-41.79c-47.8,0-69.36,26.74-69.36,58.5c0,28.92,17.54,55.49,64.52,55.49
+                                c27.41,0,40.62-10.03,44.29-24.24h0.34c0,8.03-0.17,17.39-0.34,22.24h24.74v-56.83h-67.53V242.77z"/>
+                            <polygon class="text" points="689.63,258.81 689.63,236.59 744.79,236.59 744.79,217.86 689.63,217.86 689.63,196.29 761.5,196.29
+                                761.5,172.56 657.54,172.56 657.54,282.55 763.18,282.55 763.18,258.81 	"/>
+                        </g>
+                        <g>
+                            <path class="mark" d="M295.53,61.96V28.04h-32.09v59.09c0,17.39-7.94,26-22.76,28.48v25.79c34.11-2.63,54.85-19.03,54.85-50.76V69.6
+                                h20.31v239.93H144.85V69.6h20.31v21.03c0,31.72,20.73,48.12,54.83,50.76V115.6c-14.8-2.48-22.73-11.09-22.73-28.47V28.04h-32.09
+                                v33.92h-27.95v255.21h186.27V61.96H295.53z"/>
+                            <path class="mark" d="M268.9,169.79c-0.58-0.39-1.32-0.44-1.95-0.14l-6.21,2.93c-0.54-0.3-1.08-0.58-1.63-0.87l-1.01-6.8
+                                c-0.1-0.69-0.56-1.27-1.2-1.54c-0.65-0.27-1.38-0.18-1.94,0.24l-5.5,4.08c-0.59-0.19-1.19-0.36-1.79-0.53l-2.31-6.45
+                                c-0.23-0.66-0.8-1.14-1.48-1.28c-0.68-0.14-1.39,0.1-1.86,0.61l-1.35,1.49v27.98c10.46,2.85,19.2,9.87,24.3,19.18l-3.26,6.4
+                                c-0.77,1.51-0.17,3.37,1.34,4.14l6.4,3.26c0.22,1.67,0.34,3.36,0.34,5.09c0,10.49-4.12,20.04-10.83,27.12l-7.07-1.12
+                                c-1.68-0.27-3.25,0.88-3.52,2.56l-1.12,7.1c-5.14,2.45-10.88,3.82-16.93,3.82s-11.8-1.38-16.93-3.82l-1.12-7.1
+                                c-0.13-0.81-0.57-1.53-1.23-2.01c-0.66-0.48-1.49-0.68-2.29-0.55l-7.08,1.12c-6.7-7.08-10.83-16.62-10.83-27.12
+                                c0-1.72,0.12-3.42,0.34-5.09l6.4-3.26c1.51-0.77,2.12-2.62,1.34-4.14l-3.26-6.4c5.1-9.32,13.85-16.34,24.32-19.19v-28l-1.32-1.46
+                                c-0.47-0.51-1.17-0.75-1.85-0.61c-0.68,0.14-1.24,0.62-1.48,1.28l-2.31,6.45c-0.6,0.17-1.2,0.35-1.79,0.54l-5.5-4.08
+                                c-0.56-0.41-1.3-0.5-1.94-0.24c-0.64,0.27-1.1,0.85-1.22,1.54l-1.01,6.8c-0.55,0.28-1.09,0.57-1.63,0.87l-6.21-2.93
+                                c-0.63-0.3-1.37-0.24-1.95,0.14c-0.58,0.39-0.91,1.05-0.88,1.74l0.34,6.88c-0.47,0.38-0.94,0.76-1.41,1.15l-6.68-1.67
+                                c-0.68-0.17-1.39,0.03-1.88,0.52c-0.49,0.49-0.69,1.21-0.52,1.88l1.67,6.68c-0.39,0.46-0.77,0.93-1.15,1.41l-6.88-0.33
+                                c-0.7-0.04-1.36,0.3-1.74,0.88c-0.39,0.58-0.44,1.32-0.15,1.95l2.93,6.21c-0.3,0.54-0.58,1.08-0.87,1.63l-6.8,1.01
+                                c-0.69,0.1-1.27,0.56-1.54,1.2c-0.27,0.64-0.18,1.38,0.24,1.94l4.07,5.5c-0.19,0.59-0.36,1.19-0.53,1.79l-6.45,2.31
+                                c-0.66,0.23-1.14,0.8-1.28,1.48c-0.14,0.68,0.1,1.39,0.61,1.86l5.07,4.6c-0.07,0.61-0.12,1.23-0.18,1.85l-5.88,3.53
+                                c-0.6,0.36-0.96,1-0.96,1.7c0,0.7,0.36,1.34,0.96,1.7l5.88,3.53c0.05,0.62,0.11,1.24,0.18,1.85l-5.07,4.6
+                                c-0.52,0.47-0.75,1.17-0.61,1.86c0.14,0.68,0.62,1.24,1.28,1.48l6.45,2.31c0.17,0.6,0.35,1.2,0.54,1.79l-4.07,5.5
+                                c-0.42,0.56-0.51,1.29-0.24,1.94c0.27,0.64,0.85,1.1,1.54,1.2l6.8,1.01c0.28,0.55,0.57,1.09,0.87,1.63l-2.93,6.21
+                                c-0.3,0.63-0.24,1.37,0.15,1.95c0.37,0.55,0.99,0.88,1.65,0.88c0.03,0,0.06,0,0.1,0l6.88-0.33c0.38,0.47,0.76,0.94,1.15,1.41
+                                l-1.67,6.68c-0.17,0.68,0.03,1.39,0.52,1.88c0.38,0.38,0.88,0.58,1.4,0.58c0.16,0,0.32-0.02,0.48-0.06l6.68-1.67
+                                c0.46,0.39,0.93,0.77,1.41,1.15l-0.34,6.88c-0.03,0.7,0.3,1.36,0.88,1.75c0.33,0.22,0.72,0.33,1.1,0.33c0.29,0,0.58-0.06,0.85-0.19
+                                l6.21-2.93c0.54,0.3,1.08,0.58,1.63,0.87l1.01,6.8c0.1,0.69,0.56,1.27,1.2,1.54c0.24,0.1,0.5,0.15,0.76,0.15
+                                c0.42,0,0.83-0.13,1.18-0.39l5.5-4.07c0.59,0.19,1.19,0.36,1.79,0.53l2.31,6.45c0.24,0.66,0.8,1.14,1.48,1.27
+                                c0.13,0.03,0.26,0.04,0.39,0.04c0.55,0,1.09-0.23,1.47-0.65l4.6-5.07c0.61,0.07,1.23,0.12,1.85,0.18l3.53,5.88
+                                c0.36,0.6,1,0.96,1.7,0.96c0.7,0,1.34-0.36,1.7-0.96l3.53-5.88c0.62-0.05,1.24-0.11,1.85-0.18l4.6,5.07
+                                c0.38,0.42,0.92,0.65,1.47,0.65c0.13,0,0.26-0.01,0.39-0.04c0.68-0.14,1.24-0.62,1.48-1.28l2.31-6.45c0.6-0.17,1.2-0.34,1.79-0.53
+                                l5.5,4.07c0.35,0.26,0.76,0.39,1.18,0.39c0.26,0,0.51-0.05,0.76-0.15c0.64-0.27,1.1-0.85,1.2-1.54l1.01-6.79
+                                c0.55-0.28,1.09-0.57,1.63-0.87l6.21,2.93c0.27,0.13,0.56,0.19,0.85,0.19c0.39,0,0.77-0.11,1.1-0.33c0.58-0.39,0.91-1.05,0.88-1.75
+                                l-0.33-6.88c0.47-0.38,0.94-0.76,1.41-1.15l6.68,1.67c0.16,0.04,0.32,0.06,0.48,0.06c0.52,0,1.03-0.2,1.4-0.58
+                                c0.49-0.49,0.69-1.21,0.52-1.88l-1.67-6.68c0.39-0.46,0.78-0.93,1.15-1.41l6.88,0.33c0.03,0,0.06,0,0.1,0
+                                c0.66,0,1.28-0.33,1.65-0.88c0.39-0.58,0.44-1.32,0.15-1.95l-2.93-6.21c0.3-0.54,0.58-1.08,0.87-1.63l6.8-1.01
+                                c0.69-0.1,1.27-0.56,1.54-1.2c0.27-0.64,0.17-1.38-0.24-1.94l-4.08-5.5c0.19-0.59,0.36-1.19,0.54-1.79l6.45-2.31
+                                c0.66-0.23,1.14-0.8,1.28-1.48c0.14-0.68-0.1-1.39-0.61-1.86l-5.07-4.6c0.07-0.61,0.12-1.23,0.17-1.85l5.88-3.53
+                                c0.6-0.36,0.96-1,0.96-1.7c0-0.7-0.37-1.34-0.96-1.7l-5.88-3.53c-0.05-0.62-0.11-1.24-0.18-1.85l5.08-4.6
+                                c0.52-0.47,0.75-1.17,0.61-1.86c-0.14-0.68-0.62-1.25-1.28-1.48l-6.45-2.31c-0.17-0.6-0.35-1.2-0.54-1.79l4.08-5.5
+                                c0.41-0.56,0.51-1.3,0.24-1.94c-0.27-0.64-0.85-1.1-1.54-1.2l-6.8-1.01c-0.28-0.55-0.57-1.09-0.87-1.63l2.93-6.21
+                                c0.3-0.63,0.24-1.37-0.15-1.95c-0.39-0.58-1.06-0.93-1.74-0.88l-6.88,0.33c-0.38-0.47-0.76-0.94-1.15-1.41l1.67-6.68
+                                c0.17-0.68-0.03-1.39-0.52-1.88c-0.49-0.49-1.21-0.69-1.88-0.52l-6.68,1.67c-0.46-0.39-0.93-0.77-1.41-1.15l0.33-6.88
+                                C269.81,170.84,269.48,170.18,268.9,169.79z"/>
+                            <path class="mark" d="M226.53,107.62v102.59c-7.94,1.75-13.89,8.84-13.89,17.29c0,9.76,7.94,17.71,17.71,17.71
+                                s17.71-7.94,17.71-17.71c0-8.45-5.95-15.54-13.89-17.29v-102.6V7.64h20.63V0h-48.98v7.64h20.71V107.62z M240.41,227.5
+                                c0,5.55-4.52,10.07-10.07,10.07s-10.07-4.52-10.07-10.07c0-5.55,4.52-10.07,10.07-10.07S240.41,221.95,240.41,227.5z"/>
+                        </g>
+                        </svg>
+                    <div id="intro-body">
+                        <p>Join us in <strong><a href="#location">New Zealand</a></strong> during <strong>August
+                            2025</strong> for a <a href="#unique">unique</a> kind of Rust Conference. </p>
+                    <div class="section">
+                        <h2>Let's get connected</h2>
+                        <p>We're still in the early stages of planning. Please let us know if you're interested and how you'd like to be involved. This helps us gauge interest and we'll send out info, etc. (Rewrite this)</p>
+                        <form enctype="multipart/form-data" id="form01" method="post2" target="https://hooks.zapier.com/hooks/catch/19805528/263afdp/" data-autofocus="1">
+
+                            <div class="field" data-type="email">
+                                <input type="email" name="email" id="interest-email" placeholder="iloverust@example.com" maxlength="128" required="">
+                            </div>
+
+                            <div class="field" data-type="select">
+                                <select name="interested-in" id="interest-area">
+                                    <option value="">– Interested In ... (optional) –</option>
+                                    <option value="Attending">Attending</option>
+                                    <option value="Speaking">Speaking</option>
+                                    <option value="Sponsoring">Sponsoring</option>
+                                    <option value="Organising">Organising</option>
+                                    <option value="Volunteering">Volunteering</option>
+                                    <option value="Something Else">Something Else</option>
+                                </select>
+                            </div>
+
+                            <div class="field" style="display: none;">
+                                <input type="text" name="fax" id="form01-fax" placeholder="Fax" maxlength="128" disabled="">
+                            </div>
+
+                            <div class="actions">
+                                <button type="submit" class="button">
+                                    form.submit()
+                                </button>
+                            </div>
+
+                            <input type="hidden" name="id" value="form01">
+                        </form>
+
+                    </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+
+            <div class="section">
+                <h2>You already know us!</h2>
+                <div id="tim-bio-layout">
+                    <img id="tim-photo" src="assets/images/tim-mcnamara.jpeg">
+                    <p>[Rust Forge] is hosted by <a href="https://timclicks.com">Tim McNamara</a>, also known as
+                    TimClicks (<a href="https://www.youtube.com/c/timclicks">YouTube</a>), the author of <i>Rust in
+                        Action</i> and founder of <a href="https://accelerant.dev">Accelerant</a>. During his time at
+                    AWS he became a global lead for Rust education, and through his talks, tutorials and social media
+                    following has helped hundreds of thousands of developers learn Rust. </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col">
+
+            <div class="section" id="mission">
+                <h2>Our Mission</h2>
+                <p> With [Rust Forge] we're looking to develop a self-sustaining yearly conference that build
+                relationships between developers of all skill levels through exploration and sharing of ideas with a
+                focus on creative coding and practical applications to solve concrete problems.</p>
+                <p>We hope to foster the unique aspect of in person conferences, which are the personal connections made
+                between attendees. Our "hallway track" a feature and focus.</p>
+                <p>At the end of the day our hope is that attendees will leave the conference feeling more connected,
+                confident, and inspired to solve the problems before them with Rust.</p>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col">
+
+            <div class="section" id="unique">
+                <h2>Unique how?</h2>
+                <ul>
+                    <li><strong>Focus:</strong> A conference built around strong values of respect, openness, and the
+                        exploration of ideas.
+                    </li>
+                    <li><strong>Space:</strong> Spaced out presentations and quiet spaces to provide breathing room .
+                    </li>
+                    <li><strong>Support:</strong> A workshop for presenters and attendees to help them develop great
+                        presentation skills. Our hope is that today's attendees will become tomorrow's speakers.
+                    </li>
+                    <li><strong>Show and Tell:</strong> Opportunities for attendees to give impromptu presentations</li>
+                    <li><strong>Community and Play:</strong> Join in games and community activities to get to know your
+                        peers from around the world.
+                    </li>
+                    <li><strong>Accessibility:</strong> Held in Wellington, New Zealand, Rust Forge offers more
+                        accessible accommodations, travel, and transporation, in a relaxed and inspiring unique venue.
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col">
+
+            <div class="section" id="location">
+
+                <h2>Why Wellington? Why not?</h2>
+                
+                <p>A smaller location for a world-wide conference offers some interesting benefits. By hosting Rust
+                Forge in Wellington we distribute the ecological impact away from already congested metropolitan centres
+                and support economic growth of smaller communities. It is important that Rust Forge is accessible to as
+                many people as possible and the affordability of accommodations goes a long way to inviting people from
+                all walks of life. Beyond that, Wellington is beautiful, it's easy to get around, and the people are
+                lovely. Sounds like a perfect place to have a relaxed and fun get together, doesn't it? We thought so
+                too and hope to see you there. </p>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="section">
+                <div id="bottom-cta">
+                    <h2>Let's do this!</h2>
+                    <p>Show your interest, let us know if you'd like to attend, speak, volunteer, or any of the
+                    above. You'll also receive updates as planning develops. There's no commitment. ♥</p>
+                    <p>We're also looking for sponsors. Your support makes all the difference, especially during our
+                    first year! </p>
+                    <form enctype="multipart/form-data" id="form02" method="post"
+                          target="https://hooks.zapier.com/hooks/catch/19805528/263afdp/" data-autofocus="1">
+
+                        <div class="field" data-type="email">
+                            <input type="email" name="email" placeholder="iloverust@example.com" maxlength="128" required="">
+                        </div>
+
+                        <div class="field" data-type="select">
+                            <select name="interested-in" >
+                                <option value="">– Interested In ... (optional) –</option>
+                                <option value="Attending">Attending</option>
+                                <option value="Speaking">Speaking</option>
+                                <option value="Sponsoring">Sponsoring</option>
+                                <option value="Organising">Organising</option>
+                                <option value="Volunteering">Volunteering</option>
+                                <option value="Something Else">Something Else</option>
+                            </select>
+                        </div>
+
+                        <div class="field" style="display: none;">
+                            <input type="text" name="fax" placeholder="Fax" maxlength="128" disabled="">
+                        </div>
+
+                        <div class="actions">
+                            <button type="submit" class="button">
+                                Data gooooooo!
+                            </button>
+                        </div>
+
+                        <input type="hidden" name="id" value="form01">
+                    </form>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="section">
+                <div id="footer-layout">
+                    <p>
+                    &copy; 2024, Accelerant. All rights reserved.<br> Design and Development by
+                    <a href="https://underscorefunk.com">Underscorefunk Design</a><br> Icons provided by
+                    <a href="https://iconmonstr.com">Iconmonstr</a>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="left-gutter">
+    <div class="left-top">
+        <ul class="navigation-icons">
+            <li>
+                <a href="">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 186.27 317.17" style="enable-background:new 0 0 186.27 317.17;" xml:space="preserve">
+<g>
+	<path d="M158.32,28.04h-32.09v59.09c0,17.39-7.94,26-22.76,28.48v25.79c34.11-2.63,54.85-19.03,54.85-50.76V69.6h20.31v239.93H7.64
+		V69.6h20.31v21.03c0,31.72,20.73,48.12,54.82,50.76V115.6c-14.8-2.48-22.73-11.09-22.73-28.47V28.04H27.95v33.92H0v255.21h186.27
+		V61.96h-27.95V28.04z"/>
+    <path d="M79.59,159.43c-0.68,0.14-1.25,0.62-1.48,1.28l-2.31,6.45c-0.6,0.17-1.2,0.35-1.79,0.54l-5.5-4.07
+		c-0.56-0.42-1.3-0.5-1.94-0.24c-0.64,0.27-1.1,0.85-1.2,1.54l-1.01,6.8c-0.55,0.28-1.09,0.57-1.63,0.87l-6.21-2.93
+		c-0.63-0.3-1.37-0.24-1.95,0.15c-0.58,0.39-0.91,1.05-0.88,1.74l0.33,6.88c-0.47,0.38-0.94,0.76-1.41,1.15l-6.68-1.67
+		c-0.68-0.17-1.39,0.03-1.88,0.52c-0.49,0.49-0.69,1.21-0.52,1.88l1.67,6.68c-0.39,0.46-0.77,0.93-1.15,1.41l-6.88-0.33
+		c-0.7-0.04-1.36,0.3-1.74,0.88c-0.39,0.58-0.44,1.32-0.15,1.95l2.93,6.21c-0.3,0.54-0.58,1.08-0.87,1.63l-6.8,1.01
+		c-0.69,0.1-1.27,0.56-1.54,1.2c-0.27,0.64-0.18,1.38,0.24,1.94l4.07,5.5c-0.19,0.59-0.36,1.19-0.53,1.79l-6.45,2.31
+		c-0.66,0.24-1.14,0.8-1.28,1.48c-0.14,0.68,0.1,1.39,0.61,1.85l5.07,4.6c-0.07,0.61-0.12,1.23-0.18,1.85l-5.88,3.53
+		c-0.6,0.36-0.96,1-0.96,1.7c0,0.7,0.36,1.34,0.96,1.7l5.88,3.53c0.05,0.62,0.11,1.24,0.18,1.85l-5.07,4.6
+		c-0.52,0.47-0.75,1.17-0.61,1.86c0.14,0.68,0.62,1.24,1.28,1.48l6.45,2.31c0.17,0.6,0.35,1.2,0.54,1.79l-4.08,5.5
+		c-0.42,0.56-0.51,1.29-0.24,1.94c0.27,0.64,0.85,1.1,1.54,1.2l6.8,1.01c0.28,0.55,0.57,1.09,0.87,1.63l-2.93,6.21
+		c-0.3,0.63-0.24,1.37,0.15,1.95c0.37,0.55,0.99,0.88,1.65,0.88c0.03,0,0.06,0,0.1,0l6.88-0.34c0.38,0.47,0.76,0.94,1.15,1.41
+		l-1.67,6.68c-0.17,0.68,0.03,1.39,0.52,1.88c0.38,0.38,0.88,0.58,1.4,0.58c0.16,0,0.32-0.02,0.48-0.06l6.68-1.67
+		c0.46,0.39,0.93,0.77,1.41,1.15l-0.33,6.88c-0.03,0.7,0.3,1.36,0.88,1.75c0.33,0.22,0.72,0.33,1.1,0.33c0.29,0,0.58-0.06,0.85-0.19
+		l6.21-2.93c0.54,0.3,1.08,0.58,1.63,0.87l1.01,6.79c0.1,0.69,0.56,1.27,1.2,1.54c0.24,0.1,0.5,0.15,0.76,0.15
+		c0.42,0,0.83-0.13,1.18-0.39l5.5-4.07c0.59,0.19,1.19,0.36,1.79,0.53l2.31,6.45c0.24,0.66,0.8,1.14,1.48,1.27
+		c0.13,0.03,0.26,0.04,0.39,0.04c0.55,0,1.09-0.23,1.47-0.65l4.6-5.07c0.61,0.07,1.23,0.12,1.85,0.18l3.53,5.88
+		c0.36,0.6,1,0.96,1.7,0.96c0.7,0,1.34-0.37,1.7-0.96l3.53-5.88c0.62-0.05,1.24-0.11,1.85-0.18l4.6,5.07
+		c0.38,0.42,0.92,0.65,1.47,0.65c0.13,0,0.26-0.01,0.39-0.04c0.68-0.14,1.24-0.62,1.48-1.28l2.31-6.45c0.6-0.17,1.2-0.35,1.79-0.53
+		l5.5,4.07c0.35,0.26,0.76,0.39,1.18,0.39c0.26,0,0.51-0.05,0.76-0.15c0.64-0.27,1.1-0.85,1.2-1.54l1.01-6.79
+		c0.55-0.28,1.09-0.57,1.63-0.87l6.21,2.93c0.27,0.13,0.56,0.19,0.85,0.19c0.39,0,0.77-0.11,1.1-0.33c0.58-0.39,0.91-1.05,0.88-1.75
+		l-0.33-6.88c0.47-0.38,0.94-0.76,1.41-1.15l6.68,1.67c0.16,0.04,0.32,0.06,0.48,0.06c0.52,0,1.03-0.2,1.4-0.58
+		c0.49-0.49,0.69-1.21,0.52-1.88l-1.67-6.68c0.39-0.46,0.78-0.93,1.15-1.41l6.88,0.34c0.03,0,0.06,0,0.1,0
+		c0.66,0,1.28-0.33,1.65-0.88c0.39-0.58,0.44-1.32,0.14-1.95l-2.93-6.21c0.3-0.54,0.58-1.08,0.87-1.63l6.8-1.01
+		c0.69-0.1,1.27-0.56,1.54-1.2c0.27-0.64,0.17-1.38-0.24-1.94l-4.07-5.5c0.19-0.59,0.36-1.19,0.53-1.79l6.45-2.31
+		c0.66-0.23,1.14-0.8,1.28-1.48c0.14-0.68-0.1-1.39-0.61-1.86l-5.07-4.6c0.07-0.61,0.12-1.23,0.17-1.85l5.88-3.53
+		c0.6-0.36,0.96-1,0.96-1.7c0-0.7-0.37-1.34-0.96-1.7l-5.88-3.53c-0.05-0.62-0.11-1.24-0.18-1.85l5.08-4.6
+		c0.52-0.47,0.75-1.17,0.61-1.85c-0.14-0.68-0.62-1.25-1.28-1.48l-6.45-2.31c-0.17-0.6-0.34-1.2-0.53-1.79l4.07-5.5
+		c0.41-0.56,0.51-1.3,0.24-1.94c-0.27-0.64-0.85-1.1-1.54-1.2l-6.8-1.01c-0.28-0.55-0.57-1.09-0.87-1.63l2.93-6.21
+		c0.3-0.63,0.24-1.37-0.14-1.95c-0.39-0.58-1.06-0.93-1.74-0.88l-6.88,0.33c-0.38-0.47-0.76-0.94-1.15-1.41l1.67-6.68
+		c0.17-0.68-0.03-1.39-0.52-1.88c-0.49-0.49-1.21-0.69-1.88-0.52l-6.68,1.67c-0.46-0.39-0.93-0.77-1.41-1.15l0.33-6.88
+		c0.03-0.7-0.3-1.36-0.88-1.74c-0.58-0.39-1.32-0.44-1.95-0.15l-6.21,2.93c-0.54-0.3-1.08-0.58-1.63-0.87l-1.01-6.8
+		c-0.1-0.69-0.56-1.27-1.2-1.54c-0.65-0.27-1.38-0.18-1.94,0.24l-5.5,4.07c-0.59-0.19-1.19-0.36-1.79-0.53l-2.31-6.45
+		c-0.24-0.66-0.8-1.14-1.48-1.28c-0.68-0.14-1.39,0.1-1.86,0.61l-1.35,1.49v27.98c10.46,2.85,19.2,9.87,24.3,19.18l-3.26,6.4
+		c-0.77,1.51-0.17,3.37,1.34,4.14l6.4,3.26c0.22,1.67,0.34,3.36,0.34,5.09c0,10.49-4.12,20.04-10.83,27.12l-7.07-1.12
+		c-1.68-0.27-3.25,0.88-3.52,2.56l-1.12,7.1c-5.14,2.45-10.88,3.82-16.93,3.82c-6.06,0-11.8-1.38-16.93-3.82l-1.12-7.1
+		c-0.13-0.81-0.57-1.53-1.23-2.01c-0.66-0.48-1.49-0.68-2.29-0.55l-7.08,1.12c-6.7-7.08-10.83-16.62-10.83-27.12
+		c0-1.73,0.12-3.42,0.34-5.09l6.4-3.26c1.51-0.77,2.12-2.62,1.34-4.14l-3.26-6.4c5.1-9.32,13.85-16.34,24.32-19.19v-28l-1.32-1.46
+		C80.98,159.53,80.27,159.3,79.59,159.43"/>
+    <path d="M103.2,227.5c0,5.55-4.52,10.07-10.07,10.07s-10.07-4.52-10.07-10.07s4.52-10.07,10.07-10.07S103.2,221.95,103.2,227.5
+		 M89.31,210.21c-7.94,1.75-13.89,8.84-13.89,17.29c0,9.76,7.94,17.71,17.71,17.71s17.71-7.94,17.71-17.71
+		c0-8.45-5.95-15.54-13.89-17.29v-102.6V7.64h20.63V0H68.6v7.64h20.71v99.98V210.21z"/>
+</g>
+</svg>
+
+                    <label>Rust Forge 2024</label> </a>
+            </li>
+            <li>
+                <a href="#mission">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M18 1l-6 4-6-4-6 5v7l12 10 12-10v-7z"/>
+                    </svg>
+                    <label>Mission</label> </a>
+            </li>
+            <!--
+            <li>
+                <a href="#">
+                    <svg clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="m12 16.495c1.242 0 2.25 1.008 2.25 2.25s-1.008 2.25-2.25 2.25-2.25-1.008-2.25-2.25 1.008-2.25 2.25-2.25zm0-6.75c1.242 0 2.25 1.008 2.25 2.25s-1.008 2.25-2.25 2.25-2.25-1.008-2.25-2.25 1.008-2.25 2.25-2.25zm0-6.75c1.242 0 2.25 1.008 2.25 2.25s-1.008 2.25-2.25 2.25-2.25-1.008-2.25-2.25 1.008-2.25 2.25-2.25z"/>
+                    </svg>
+                    <label>Timeline</label> </a>
+            </li>
+            -->
+
+            <li>
+                <a href="#location">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M12 0c-4.198 0-8 3.403-8 7.602 0 4.198 3.469 9.21 8 16.398 4.531-7.188 8-12.2 8-16.398 0-4.199-3.801-7.602-8-7.602zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/>
+                    </svg>
+                    <label>Location</label> </a>
+            </li>
+            <li>
+                <a href="#bottom-cta">
+                    <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+                        <path d="M20 24h-20v-22h3c1.229 0 2.18-1.084 3-2h8c.82.916 1.771 2 3 2h3v9h-2v-7h-4l-2 2h-3.898l-2.102-2h-4v18h16v-5h2v7zm-10-4h-6v-1h6v1zm0-2h-6v-1h6v1zm6-5h8v2h-8v3l-5-4 5-4v3zm-6 3h-6v-1h6v1zm0-2h-6v-1h6v1zm0-2h-6v-1h6v1zm0-2h-6v-1h6v1zm-1-7c0 .552.448 1 1 1s1-.448 1-1-.448-1-1-1-1 .448-1 1z"/>
+                    </svg>
+                    <label>Sign-up</label> </a>
+            </li>
+
+        </ul>
+    </div>
+    <div class="left-bottom">
+
+    </div>
+</div>
+
+<div class="right-gutter">
+    <div class="right-top">
+
+    </div>
+    <div class="right-bottom">
+        <ul class="social-icons">
+            <li><a href="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                </svg>
+            </a></li>
+            <li><a href="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+                </svg>
+            </a></li>
+            <li><a href="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+            </a></li>
+            <li><a href="">
+                <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
+                    <path d="M19.54 0c1.356 0 2.46 1.104 2.46 2.472v21.528l-2.58-2.28-1.452-1.344-1.536-1.428.636 2.22h-13.608c-1.356 0-2.46-1.104-2.46-2.472v-16.224c0-1.368 1.104-2.472 2.46-2.472h16.08zm-4.632 15.672c2.652-.084 3.672-1.824 3.672-1.824 0-3.864-1.728-6.996-1.728-6.996-1.728-1.296-3.372-1.26-3.372-1.26l-.168.192c2.04.624 2.988 1.524 2.988 1.524-1.248-.684-2.472-1.02-3.612-1.152-.864-.096-1.692-.072-2.424.024l-.204.024c-.42.036-1.44.192-2.724.756-.444.204-.708.348-.708.348s.996-.948 3.156-1.572l-.12-.144s-1.644-.036-3.372 1.26c0 0-1.728 3.132-1.728 6.996 0 0 1.008 1.74 3.66 1.824 0 0 .444-.54.804-.996-1.524-.456-2.1-1.416-2.1-1.416l.336.204.048.036.047.027.014.006.047.027c.3.168.6.3.876.408.492.192 1.08.384 1.764.516.9.168 1.956.228 3.108.012.564-.096 1.14-.264 1.74-.516.42-.156.888-.384 1.38-.708 0 0-.6.984-2.172 1.428.36.456.792.972.792.972zm-5.58-5.604c-.684 0-1.224.6-1.224 1.332 0 .732.552 1.332 1.224 1.332.684 0 1.224-.6 1.224-1.332.012-.732-.54-1.332-1.224-1.332zm4.38 0c-.684 0-1.224.6-1.224 1.332 0 .732.552 1.332 1.224 1.332.684 0 1.224-.6 1.224-1.332 0-.732-.54-1.332-1.224-1.332z"/>
+                </svg>
+            </a></li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    document
+        .querySelectorAll('form')
+        .forEach(form => {
+            form
+                .addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    fetch(
+                        e.target.target,
+                        {
+                            body: new FormData(e.target),
+                            method: e.target.method
+                        }
+                    ).then(response => response.json())
+                        .then(data => {
+                            e.target.reset();
+                            if (data.status === "success") {
+                                alert("Thank you for your interest! An automated confirmation email should be with you shortly. Please email contact@rustforgeconf.com if it hasn't arrived within 24h.");
+                                return;
+                            }
+                            alert("Looks like there was a problem submitting your data. Please email contact@rustforgeconf.com.")
+
+                        })
+                });
+        });
+</script>
+</body>
+</html>
