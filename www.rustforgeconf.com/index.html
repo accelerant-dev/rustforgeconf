@@ -385,7 +385,7 @@
             display: block;
         }
 
-        #bottom-cta {
+        .form-box {
 
             border: 1px solid var(--brand-color-light);
             box-shadow: 10px 10px 0px var(--brand-color-light);
@@ -500,39 +500,40 @@
 
                             
                     <div class="section">
-                        <h2>Register interest</h2>
-                        <p>We're still in the early stages of planning. Please let us know if you're interested and how you'd like to be involved. This helps us gauge interest and we'll send out info, etc. (Rewrite this)</p>
-                        <form enctype="multipart/form-data" id="form01" method="post2" target="https://hooks.zapier.com/hooks/catch/19805528/263afdp/" data-autofocus="1">
+                        <div class="form-box">
+                            <h2>Register interest</h2>
+                            <p>We're still in the early stages of planning. Please let us know if you're interested and how you'd like to be involved. This helps us gauge interest and we'll send out info, etc. (Rewrite this)</p>
+                            <form enctype="multipart/form-data" id="form01" method="post2" target="https://hooks.zapier.com/hooks/catch/19805528/263afdp/" data-autofocus="1">
 
-                            <div class="field" data-type="email">
-                                <input type="email" name="email" id="interest-email" placeholder="iloverust@example.com" maxlength="128" required="">
-                            </div>
+                                <div class="field" data-type="email">
+                                    <input type="email" name="email" id="interest-email" placeholder="iloverust@example.com" maxlength="128" required="">
+                                </div>
 
-                            <div class="field" data-type="select">
-                                <select name="interested-in" id="interest-area">
-                                    <option value="">– Interested In ... (optional) –</option>
-                                    <option value="Attending">Attending</option>
-                                    <option value="Speaking">Speaking</option>
-                                    <option value="Sponsoring">Sponsoring</option>
-                                    <option value="Organising">Organising</option>
-                                    <option value="Volunteering">Volunteering</option>
-                                    <option value="Something Else">Something Else</option>
-                                </select>
-                            </div>
+                                <div class="field" data-type="select">
+                                    <select name="interested-in" id="interest-area">
+                                        <option value="">– Interested In ... (optional) –</option>
+                                        <option value="Attending">Attending</option>
+                                        <option value="Speaking">Speaking</option>
+                                        <option value="Sponsoring">Sponsoring</option>
+                                        <option value="Organising">Organising</option>
+                                        <option value="Volunteering">Volunteering</option>
+                                        <option value="Something Else">Something Else</option>
+                                    </select>
+                                </div>
 
-                            <div class="field" style="display: none;">
-                                <input type="text" name="fax" id="form01-fax" placeholder="Fax" maxlength="128" disabled="">
-                            </div>
+                                <div class="field" style="display: none;">
+                                    <input type="text" name="fax" id="form01-fax" placeholder="Fax" maxlength="128" disabled="">
+                                </div>
 
-                            <div class="actions">
-                                <button type="submit" class="button">
-                                    form.submit()
-                                </button>
-                            </div>
+                                <div class="actions">
+                                    <button type="submit" class="button">
+                                        form.submit()
+                                    </button>
+                                </div>
 
-                            <input type="hidden" name="id" value="form01">
-                        </form>
-
+                                <input type="hidden" name="id" value="form01">
+                            </form>
+                        </div>
                     </div>
 
                     </div>
@@ -629,7 +630,7 @@
     <div class="row">
         <div class="col">
             <div class="section">
-                <div id="bottom-cta">
+                    <div class="form-box">
                     <h2>Let's do this!</h2>
                     <p>Show your interest, let us know if you'd like to attend, speak, volunteer, or any of the
                     above. You'll also receive updates as planning develops. There's no commitment. ♥</p>
