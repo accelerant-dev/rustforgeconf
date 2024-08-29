@@ -168,10 +168,12 @@
             font-family: inherit;
 
         }
+
         .field {
             display: flex;
             justify-content: stretch;
         }
+
         input[type="email"] {
             padding: 1rem 2rem;
             outline: 1px solid var(--framework-color);
@@ -185,6 +187,7 @@
             display: block;
             width: 100%;
         }
+
         select {
             display: block;
             font-size: inherit;
@@ -196,8 +199,7 @@
 
             appearance: unset;
             /* background-color: rgba(0,0,0,0.29); */
-            background-image:
-        url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='504' height='552' preserveAspectRatio='none' viewBox='0 0 504 552'%3E%3Cpath d='M483.9,210.9L252,442.9L20.1,210.9l67.9-67.9L252,307.1l164.1-164.1L483.9,210.9z' fill='%23FFFFFF' /%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='504' height='552' preserveAspectRatio='none' viewBox='0 0 504 552'%3E%3Cpath d='M483.9,210.9L252,442.9L20.1,210.9l67.9-67.9L252,307.1l164.1-164.1L483.9,210.9z' fill='%23FFFFFF' /%3E%3C/svg%3E");
             background-position: calc(100% - 1.1375rem) center;
             background-size: 20px;
             background-repeat: no-repeat;
@@ -211,6 +213,7 @@
             line-height: 3.25rem;
             width: 100%;
         }
+
         select:hover {
             cursor: pointer;
         }
@@ -358,7 +361,7 @@
         #intro-body {
             text-align: center;
             max-width: 25rem;
-            margin: 0 auto;2
+            margin: 0 auto;
             display: flex;
             flex-direction: column;
             gap: var(--spacing-default);
@@ -491,18 +494,32 @@
                         </g>
                         </svg>
                     <div id="intro-body">
-                                                  <p class="p-summary"><strong><span class="p-name">Rust Forge 2025</span> is a <span class="p-category">conference</span> for developers building with the Rust programming language that is being hosted in </Join us in <strong><a href="#location"><span class="p-location h-hdr"><span class="p-locality">Wellington</span>, <span class="p-country-name">New Zealand</span></a></span> from <span class="dt-start" datetime="27-08-2025">27</span>-<span class="dt-end" datetime="30-08-2025">30th</span> August 2025. Join us!
+                        <p class="p-summary">
+                            <span class="p-name">Rust Forge 2025</span> is a
+                            <span class="p-category">conference</span> for developers building with the Rust programming
+                            language that is being hosted in
+                            <strong>
+                                <a href="#location">
+                                    <span class="p-location h-hdr">
+                                        <span class="p-locality">Wellington</span>,
+                                        <span class="p-country-name">New Zealand</span>
+                                    </span>
+                                </a>
                             </strong>
+                            from <span class="dt-start" datetime="27-08-2025">27</span>-
+                            <span class="dt-end" datetime="30-08-2025">30th</span>
+                            August 2025. Join us!
+                        </p>
+
+                    </div>
 
 
-
-</div>
-
-                            
                     <div class="section">
                         <div class="form-box">
                             <h2>Register interest</h2>
-                            <p>We're still in the early stages of planning. Please let us know if you're interested and how you'd like to be involved. This helps us gauge interest and we'll send out info, etc. (Rewrite this)</p>
+                            <p>We're still in the early stages of planning. Please let us know if you're interested and
+                            how you'd like to be involved. This helps us gauge interest and we'll send out info, etc.
+                            (Rewrite this)</p>
                             <form enctype="multipart/form-data" id="form01" method="post2" target="https://hooks.zapier.com/hooks/catch/19805528/263afdp/" data-autofocus="1">
 
                                 <div class="field" data-type="email">
@@ -536,158 +553,154 @@
                         </div>
                     </div>
 
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+
+        <div class="section">
+            <h2>You already know us!</h2>
+            <div id="tim-bio-layout">
+                <img id="tim-photo" src="assets/images/tim-mcnamara.jpeg">
+                <p>[Rust Forge] is hosted by <a href="https://timclicks.com">Tim McNamara</a>, also known as TimClicks (<a href="https://www.youtube.com/c/timclicks">YouTube</a>),
+                the author of <i>Rust in Action</i> and founder of <a href="https://accelerant.dev">Accelerant</a>.
+                During his time at AWS he became a global lead for Rust education, and through his talks, tutorials and
+                social media following has helped hundreds of thousands of developers learn Rust. </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col">
+
+        <div class="section" id="mission">
+            <h2>Our Mission</h2>
+            <p> With [Rust Forge] we're looking to develop a self-sustaining yearly conference that build relationships
+            between developers of all skill levels through exploration and sharing of ideas with a focus on creative
+            coding and practical applications to solve concrete problems.</p>
+            <p>We hope to foster the unique aspect of in person conferences, which are the personal connections made
+            between attendees. Our "hallway track" a feature and focus.</p>
+            <p>At the end of the day our hope is that attendees will leave the conference feeling more connected,
+            confident, and inspired to solve the problems before them with Rust.</p>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col">
+
+        <div class="section" id="unique">
+            <h2>Unique how?</h2>
+            <ul>
+                <li><strong>Focus:</strong> A conference built around strong values of respect, openness, and the
+                    exploration of ideas.
+                </li>
+                <li><strong>Space:</strong> Spaced out presentations and quiet spaces to provide breathing room .
+                </li>
+                <li><strong>Support:</strong> A workshop for presenters and attendees to help them develop great
+                    presentation skills. Our hope is that today's attendees will become tomorrow's speakers.
+                </li>
+                <li><strong>Show and Tell:</strong> Opportunities for attendees to give impromptu presentations</li>
+                <li><strong>Community and Play:</strong> Join in games and community activities to get to know your
+                    peers from around the world.
+                </li>
+                <li><strong>Accessibility:</strong> Held in Wellington, New Zealand, Rust Forge offers more accessible
+                    accommodations, travel, and transporation, in a relaxed and inspiring unique venue.
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col">
+
+        <div class="section" id="location">
+
+            <h2>Why Wellington? Why not?</h2>
+
+            <p>A smaller location for a world-wide conference offers some interesting benefits. By hosting Rust Forge in
+            Wellington we distribute the ecological impact away from already congested metropolitan centres and support
+            economic growth of smaller communities. It is important that Rust Forge is accessible to as many people as
+            possible and the affordability of accommodations goes a long way to inviting people from all walks of life.
+            Beyond that, Wellington is beautiful, it's easy to get around, and the people are lovely. Sounds like a
+            perfect place to have a relaxed and fun get together, doesn't it? We thought so too and hope to see you
+            there. </p>
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <div class="section">
+            <div class="form-box">
+                <h2>Let's do this!</h2>
+                <p>Show your interest, let us know if you'd like to attend, speak, volunteer, or any of the above.
+                You'll also receive updates as planning develops. There's no commitment. ♥</p>
+                <p>We're also looking for sponsors. Your support makes all the difference, especially during our first
+                year! </p>
+                <form enctype="multipart/form-data" id="form02" method="post" target="https://hooks.zapier.com/hooks/catch/19805528/263afdp/" data-autofocus="1">
+
+                    <div class="field" data-type="email">
+                        <input type="email" name="email" placeholder="iloverust@example.com" maxlength="128" required="">
                     </div>
 
-                </div>
-            </div>
+                    <div class="field" data-type="select">
+                        <select name="interested-in">
+                            <option value="">– Interested In ... (optional) –</option>
+                            <option value="Attending">Attending</option>
+                            <option value="Speaking">Speaking</option>
+                            <option value="Sponsoring">Sponsoring</option>
+                            <option value="Organising">Organising</option>
+                            <option value="Volunteering">Volunteering</option>
+                            <option value="Something Else">Something Else</option>
+                        </select>
+                    </div>
 
-        </div>
-    </div>
+                    <div class="field" style="display: none;">
+                        <input type="text" name="fax" placeholder="Fax" maxlength="128" disabled="">
+                    </div>
 
-    <div class="row">
-        <div class="col">
+                    <div class="actions">
+                        <button type="submit" class="button">
+                            Data gooooooo!
+                        </button>
+                    </div>
 
-            <div class="section">
-                <h2>You already know us!</h2>
-                <div id="tim-bio-layout">
-                    <img id="tim-photo" src="assets/images/tim-mcnamara.jpeg">
-                    <p>[Rust Forge] is hosted by <a href="https://timclicks.com">Tim McNamara</a>, also known as
-                    TimClicks (<a href="https://www.youtube.com/c/timclicks">YouTube</a>), the author of <i>Rust in
-                        Action</i> and founder of <a href="https://accelerant.dev">Accelerant</a>. During his time at
-                    AWS he became a global lead for Rust education, and through his talks, tutorials and social media
-                    following has helped hundreds of thousands of developers learn Rust. </p>
-                </div>
-            </div>
+                    <input type="hidden" name="id" value="form01">
+                </form>
 
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div class="col">
-
-            <div class="section" id="mission">
-                <h2>Our Mission</h2>
-                <p> With [Rust Forge] we're looking to develop a self-sustaining yearly conference that build
-                relationships between developers of all skill levels through exploration and sharing of ideas with a
-                focus on creative coding and practical applications to solve concrete problems.</p>
-                <p>We hope to foster the unique aspect of in person conferences, which are the personal connections made
-                between attendees. Our "hallway track" a feature and focus.</p>
-                <p>At the end of the day our hope is that attendees will leave the conference feeling more connected,
-                confident, and inspired to solve the problems before them with Rust.</p>
-            </div>
-
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div class="col">
-
-            <div class="section" id="unique">
-                <h2>Unique how?</h2>
-                <ul>
-                    <li><strong>Focus:</strong> A conference built around strong values of respect, openness, and the
-                        exploration of ideas.
-                    </li>
-                    <li><strong>Space:</strong> Spaced out presentations and quiet spaces to provide breathing room .
-                    </li>
-                    <li><strong>Support:</strong> A workshop for presenters and attendees to help them develop great
-                        presentation skills. Our hope is that today's attendees will become tomorrow's speakers.
-                    </li>
-                    <li><strong>Show and Tell:</strong> Opportunities for attendees to give impromptu presentations</li>
-                    <li><strong>Community and Play:</strong> Join in games and community activities to get to know your
-                        peers from around the world.
-                    </li>
-                    <li><strong>Accessibility:</strong> Held in Wellington, New Zealand, Rust Forge offers more
-                        accessible accommodations, travel, and transporation, in a relaxed and inspiring unique venue.
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="row">
-        <div class="col">
-
-            <div class="section" id="location">
-
-                <h2>Why Wellington? Why not?</h2>
-                
-                <p>A smaller location for a world-wide conference offers some interesting benefits. By hosting Rust
-                Forge in Wellington we distribute the ecological impact away from already congested metropolitan centres
-                and support economic growth of smaller communities. It is important that Rust Forge is accessible to as
-                many people as possible and the affordability of accommodations goes a long way to inviting people from
-                all walks of life. Beyond that, Wellington is beautiful, it's easy to get around, and the people are
-                lovely. Sounds like a perfect place to have a relaxed and fun get together, doesn't it? We thought so
-                too and hope to see you there. </p>
 
             </div>
         </div>
     </div>
+</div>
 
-    <div class="row">
-        <div class="col">
-            <div class="section">
-                    <div class="form-box">
-                    <h2>Let's do this!</h2>
-                    <p>Show your interest, let us know if you'd like to attend, speak, volunteer, or any of the
-                    above. You'll also receive updates as planning develops. There's no commitment. ♥</p>
-                    <p>We're also looking for sponsors. Your support makes all the difference, especially during our
-                    first year! </p>
-                    <form enctype="multipart/form-data" id="form02" method="post"
-                          target="https://hooks.zapier.com/hooks/catch/19805528/263afdp/" data-autofocus="1">
-
-                        <div class="field" data-type="email">
-                            <input type="email" name="email" placeholder="iloverust@example.com" maxlength="128" required="">
-                        </div>
-
-                        <div class="field" data-type="select">
-                            <select name="interested-in" >
-                                <option value="">– Interested In ... (optional) –</option>
-                                <option value="Attending">Attending</option>
-                                <option value="Speaking">Speaking</option>
-                                <option value="Sponsoring">Sponsoring</option>
-                                <option value="Organising">Organising</option>
-                                <option value="Volunteering">Volunteering</option>
-                                <option value="Something Else">Something Else</option>
-                            </select>
-                        </div>
-
-                        <div class="field" style="display: none;">
-                            <input type="text" name="fax" placeholder="Fax" maxlength="128" disabled="">
-                        </div>
-
-                        <div class="actions">
-                            <button type="submit" class="button">
-                                Data gooooooo!
-                            </button>
-                        </div>
-
-                        <input type="hidden" name="id" value="form01">
-                    </form>
-
-
-
-                </div>
+<div class="row">
+    <div class="col">
+        <div class="section">
+            <div id="footer-layout">
+                <p>
+                &copy; 2024 Accelerant Limited. All rights reserved.<br><br> Design and Development by
+                <a href="https://underscorefunk.com">Underscorefunk Design</a>.<br> Icons provided by
+                <a href="https://iconmonstr.com">Iconmonstr</a>. </p>
             </div>
         </div>
     </div>
-
-    <div class="row">
-        <div class="col">
-            <div class="section">
-                <div id="footer-layout">
-                    <p>
-                    &copy; 2024 Accelerant Limited. All rights reserved.<br><br> Design and Development by
-                    <a href="https://underscorefunk.com">Underscorefunk Design</a>.<br> Icons provided by
-                    <a href="https://iconmonstr.com">Iconmonstr</a>.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+</div>
 </div>
 
 <div class="left-gutter">
