@@ -4,11 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Rust Forge Conference</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
+    <title>Rust Forge Conference | Wellington, New Zealand | August 2025</title>
     <style>
+        @font-face {
+            font-family: 'Fira Code';
+            src:
+                url('assets/fonts/FiraCode/FiraCode-Light.woff2') format('woff2'),
+                url("assets/fonts/FiraCode/FiraCode-Light.woff") format("woff")
+            ;
+            font-weight: 300;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Fira Code';
+            src:
+                url('assets/fonts/FiraCode/FiraCode-Regular.woff2') format('woff2'),
+                url("assets/fonts/FiraCode/FiraCode-Regular.woff") format("woff");
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Fira Code';
+            src:
+                url('assets/fonts/FiraCode/FiraCode-Medium.woff2') format('woff2'),
+                url("assets/fonts/FiraCode/FiraCode-Medium.woff") format("woff");
+            font-weight: 500;
+            font-style: normal;
+        }
+
+            @font-face {
+                font-family: 'Fira Code';
+                src:
+                    url('assets/fonts/FiraCode/FiraCode-SemiBold.woff2') format('woff2'),
+                    url("assets/fonts/FiraCode/FiraCode-SemiBold.woff") format("woff");
+                font-weight: 600;
+                font-style: normal;
+            }
+
+            @font-face {
+                font-family: 'Fira Code';
+                src:
+                    local("Fira Code"),
+                    local("Fira-Code"),
+                    local("FiraCode"),
+                    url('assets/fonts/FiraCode/FiraCode-Bold.woff2') format('woff2'),
+                    url("assets/fonts/FiraCode/FiraCode-Bold.woff") format("woff");
+                font-weight: 700;
+                font-style: normal;
+            }
+
+        @font-face {
+            font-family: "Space Mono";
+            src:
+                url("assets/fonts/SpaceMono/SpaceMono-Regular.woff2") format("woff2"),
+                url("assets/fonts/SpaceMono/SpaceMono-Regular.woff") format("woff"),
+                url("assets/fonts/SpaceMono/SpaceMono-Regular.tff") format("ttf"),
+            ;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: "Space Mono";
+            src:
+                url("assets/fonts/SpaceMono/SpaceMono-Italic.woff2") format("woff2"),
+                url("assets/fonts/SpaceMono/SpaceMono-Italic.woff") format("woff"),
+                url("assets/fonts/SpaceMono/SpaceMono-Italic.tff") format("ttf"),
+            ;
+            font-weight: 400;
+            font-style: italic;
+        }
+
+        @font-face {
+            font-family: "Space Mono";
+            src:
+                url("assets/fonts/SpaceMono/SpaceMono-Bold.woff2") format("woff2"),
+                url("assets/fonts/SpaceMono/SpaceMono-Bold.woff") format("woff"),
+                url("assets/fonts/SpaceMono/SpaceMono-Bold.tff") format("ttf"),
+            ;
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: "Space Mono";
+            src:
+                url("assets/fonts/SpaceMono/SpaceMono-BoldItalic.woff2") format("woff2"),
+                url("assets/fonts/SpaceMono/SpaceMono-BoldItalic.woff") format("woff"),
+                url("assets/fonts/SpaceMono/SpaceMono-BoldItalic.tff") format("woff"),
+            ;
+            font-weight: 700;
+            font-style: italic;
+        }
+
         :root {
             --brand-color-dark: #06252f;
             --brand-color-light: rgba(26, 183, 143, 1);
@@ -71,7 +161,9 @@
         }
 
         h2 {
-            font-size: 1em;
+            font-family: 'Space Mono', 'Fira Code', monospace;
+            font-size: 1.2em;
+            font-weight: 600;
             margin: 0;
             text-transform: uppercase;
             letter-spacing: 1em;
@@ -135,8 +227,8 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            gap: var(--spacing-content);
-            padding: var(--spacing-content) 0;
+            gap: calc(3 * var(--spacing-content));
+            padding: calc(3 * var(--spacing-content)) 0;
         }
 
 
@@ -358,12 +450,15 @@
         #intro-body {
             text-align: center;
             max-width: 25rem;
-            margin: 0 auto;2
+            margin: 0 auto;
             display: flex;
             flex-direction: column;
             gap: var(--spacing-default);
         }
 
+        #unique li {
+            padding-bottom: 1.42em;
+        }
 
         #tim-bio-layout {
             display: flex;
@@ -590,17 +685,20 @@
                     <li><strong>Focus:</strong> A conference built around strong values of respect, openness, and the
                         exploration of ideas.
                     </li>
-                    <li><strong>Space:</strong> Spaced out presentations and quiet spaces to provide breathing room .
+                    <li><strong>Space:</strong> Spaced out presentations and
+                    quiet spaces to provide breathing room for people who need
+                    to recharge their social batteries.
                     </li>
-                    <li><strong>Support:</strong> A workshop for presenters and attendees to help them develop great
-                        presentation skills. Our hope is that today's attendees will become tomorrow's speakers.
+                    <li><strong>Support:</strong> Advice and support for
+                    presenters, including a pre-event workshop for presenters
+                    and other attendees to help them develop their presentation skills. Our hope is that today's attendees will become tomorrow's speakers.
                     </li>
                     <li><strong>Show and Tell:</strong> Opportunities for attendees to give impromptu presentations</li>
                     <li><strong>Community and Play:</strong> Join in games and community activities to get to know your
                         peers from around the world.
                     </li>
-                    <li><strong>Accessibility:</strong> Held in Wellington, New Zealand, Rust Forge offers more
-                        accessible accommodations, travel, and transporation, in a relaxed and inspiring unique venue.
+                    <li><strong>Accessibility:</strong> Held in Wellington, New Zealand, [Rust Forge] offers more
+                        accessible accommodation, travel, and transportation, in a relaxed and inspiring unique venue.
                     </li>
                 </ul>
             </div>
@@ -615,11 +713,14 @@
 
                 <h2>Why Wellington? Why not?</h2>
                 
-                <p>A smaller location for a world-wide conference offers some interesting benefits. By hosting Rust
+                <p>A smaller location for a world-wide conference offers some
+                interesting benefits. </p>
+                <p>By hosting Rust
                 Forge in Wellington we distribute the ecological impact away from already congested metropolitan centres
-                and support economic growth of smaller communities. It is important that Rust Forge is accessible to as
+                and support economic growth of smaller communities. It is important that [Rust Forge] is accessible to as
                 many people as possible and the affordability of accommodations goes a long way to inviting people from
-                all walks of life. Beyond that, Wellington is beautiful, it's easy to get around, and the people are
+                all walks of life.</p>
+                <p>Beyond that, Wellington is beautiful, it's easy to get around, and the people are
                 lovely. Sounds like a perfect place to have a relaxed and fun get together, doesn't it? We thought so
                 too and hope to see you there. </p>
 
@@ -661,7 +762,7 @@
 
                         <div class="actions">
                             <button type="submit" class="button">
-                                Data gooooooo!
+                                form.submit()
                             </button>
                         </div>
 
@@ -744,7 +845,7 @@
 </g>
 </svg>
 
-                    <label>Rust Forge 2024</label> </a>
+                    <label>Rust Forge 2025</label> </a>
             </li>
             <li>
                 <a href="#mission">
